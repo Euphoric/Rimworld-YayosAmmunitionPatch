@@ -2,6 +2,8 @@
 
 <Patch>
 
+    <!--    Industrial guns   -->
+    
     <Operation Class="XmlExtensions.PatchOperationSafeAdd">
         <xpath>Defs/ThingDef[defName = "Gun_Revolver"]</xpath>
         <value>
@@ -25,33 +27,6 @@
         <value>
             <weaponTags>
                 <li>ammo_industrial/96/1</li>
-            </weaponTags>
-        </value>
-    </Operation>
-
-    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
-        <xpath>Defs/ThingDef[defName = "Gun_IncendiaryLauncher"]</xpath>
-        <value>
-            <weaponTags>
-                <li>ammo_industrial_fire/18/3</li>
-            </weaponTags>
-        </value>
-    </Operation>
-
-    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
-        <xpath>Defs/ThingDef[defName = "Gun_SmokeLauncher"]</xpath>
-        <value>
-            <weaponTags>
-                <li>ammo_industrial_fire/18/1</li>
-            </weaponTags>
-        </value>
-    </Operation>
-
-    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
-        <xpath>Defs/ThingDef[defName = "Gun_EmpLauncher"]</xpath>
-        <value>
-            <weaponTags>
-                <li>ammo_industrial_emp/18/3</li>
             </weaponTags>
         </value>
     </Operation>
@@ -137,6 +112,73 @@
         </value>
     </Operation>
 
+<!--    Grenades  and launchers -->
+    
+    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+        <xpath>Defs/ThingDef[defName = "Weapon_GrenadeFrag"]</xpath>
+        <value>
+            <weaponTags>
+                <li>ammo_industrial_fire/9/2</li>
+            </weaponTags>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+        <xpath>Defs/ThingDef[defName = "Weapon_GrenadeMolotov"]</xpath>
+        <value>
+            <weaponTags>
+                <li>ammo_industrial_fire/9/1</li>
+            </weaponTags>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+        <xpath>Defs/ThingDef[defName = "Weapon_GrenadeEMP"]</xpath>
+        <value>
+            <weaponTags>
+                <li>ammo_industrial_emp/9/1</li>
+            </weaponTags>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+        <xpath>Defs/ThingDef[defName = "Weapon_GrenadeEMP"]</xpath>
+        <value>
+            <weaponTags>
+                <li>ammo_industrial_emp/9/1</li>
+            </weaponTags>
+        </value>
+    </Operation>
+    
+    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+        <xpath>Defs/ThingDef[defName = "Gun_IncendiaryLauncher"]</xpath>
+        <value>
+            <weaponTags>
+                <li>ammo_industrial_fire/18/3</li>
+            </weaponTags>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+        <xpath>Defs/ThingDef[defName = "Gun_SmokeLauncher"]</xpath>
+        <value>
+            <weaponTags>
+                <li>ammo_industrial_fire/18/1</li>
+            </weaponTags>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+        <xpath>Defs/ThingDef[defName = "Gun_EmpLauncher"]</xpath>
+        <value>
+            <weaponTags>
+                <li>ammo_industrial_emp/18/3</li>
+            </weaponTags>
+        </value>
+    </Operation>
+    
+<!--    Spacer guns   -->
+    
     <Operation Class="XmlExtensions.PatchOperationSafeAdd">
         <xpath>Defs/ThingDef[defName = "Gun_ChargeRifle"]</xpath>
         <value>
@@ -145,7 +187,7 @@
             </weaponTags>
         </value>
     </Operation>
-
+    
     <Operation Class="XmlExtensions.PatchOperationSafeAdd">
         <xpath>Defs/ThingDef[defName = "Gun_ChargeLance"]</xpath>
         <value>
