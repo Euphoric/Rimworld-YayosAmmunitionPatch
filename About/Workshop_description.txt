@@ -7,6 +7,12 @@ Patches Yayo's ammunition sytem to be more interesting and have more significant
    Supported mods:
   * Rimworld Core
   * [b]Rimsenal - Augmented Vanilla Pack[/b] - Recommended as it adds more weapon variety
- * Changes how much ammo is produced and ammo stack sizes to better fit above changes [TODO]
- * Moves Industrial Ammo under Gunsmithing research and Spacer ammo under Pulse Charge Munitions research [TODO]
+ * Changes how much ammo is produced (3x more) and ammo stack sizes (4x more) to better fit above changes
+ * Make ammo require specific research before it can be produced
+  * Industrial - Gunsmithing
+  * Industrial Explosive - Biofuel refining
+  * Industrial Special - Microelectronics
+  * Spacer - Pulse-charge Munitions
+  * Spacer Explosive - Pulse-charge + Mortars
+  * Spacer Special - Pulse-charge
  
