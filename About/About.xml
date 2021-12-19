@@ -23,6 +23,7 @@
         <li>imranfish.xmlextensions</li>
         <!--  Optional mods  -->
         <li>rimsenal.EVP</li>
+        <li>Nemonian.MY</li>
     </loadAfter>
     <description>Changes how Yayo's ammunition is assigned to guns.</description>
 </ModMetaData>

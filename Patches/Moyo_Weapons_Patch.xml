@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Moyo-From the depth</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+
+                <!--    Industrial    -->
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_Pistol"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/48/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <!--    Spacer    -->
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_PrecisionRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/36/9</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_BoltCaster"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/24/12</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_HeavyBoltCaster"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/12/13</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_ChargeRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/96/5</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_ChargeSMG"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/96/6</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_AutoCannon"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/240/1</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_HeavyChargeRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/96/6</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_HeavyAutoCannon"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/240/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_HeavyAutoCannon"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/240/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+                
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_CryoBlaster"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer_emp/24/5</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Moyo_CryoBlaster"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer_emp/24/5</li>
+                        </weaponTags>
+                    </value>
+                </li>
+                
+            </operations>
+        </match>
+    </Operation>
+</Patch>
