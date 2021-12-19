@@ -1,0 +1,12 @@
+﻿[h1]Yayo's Ammunition Patch[/h1]
+
+Patches Yayo's ammunition sytem to be more interesting and have more significant gameplay impact.
+
+[h3]Notable changes[/h3]
+ * Change weapon's ammo requirement per shot and how much they carry.
+   Supported mods:
+  * Rimworld Core
+  * [b]Rimsenal - Augmented Vanilla Pack[/b] - Recommended as it adds more weapon variety
+ * Changes how much ammo is produced and ammo stack sizes to better fit above changes [TODO]
+ * Moves Industrial Ammo under Gunsmithing research and Spacer ammo under Pulse Charge Munitions research [TODO]
+ 
