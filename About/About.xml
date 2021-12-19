@@ -24,6 +24,7 @@
         <!--  Optional mods  -->
         <li>rimsenal.EVP</li>
         <li>Nemonian.MY</li>
+        <li>AhnDemi.PanieltheAutomata</li>
     </loadAfter>
     <description>Changes how Yayo's ammunition is assigned to guns.</description>
 </ModMetaData>
