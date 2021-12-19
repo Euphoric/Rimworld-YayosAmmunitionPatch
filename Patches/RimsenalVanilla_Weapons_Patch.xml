@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Rimsenal - Augmented Vanilla Pack</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+
+                <!--    Primitive    -->
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_Blowgun"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_primitive/24/1</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_ThrowingAxes"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_none</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_ThrowingClubs"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_none</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_ThrowingClubs"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_none</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <!--    Industrial    -->
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Bow_Compound"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/24/1</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_RSBattleRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/96/3</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_RSCarbine"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/96/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_PistolHeavyRevolver"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/24/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_RSAMRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/12/5</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_Repeater"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/36/1</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_AutomaticRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/128/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_MarksmanRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/36/4</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_MilitiaRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/96/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_FR"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/36/3</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_RSThumper"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial_fire/12/5</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <!--    Smart    -->
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_SmartRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/96/4</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_SmartPistol"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/48/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_SMG"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/96/3</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "SmartMG"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/128/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_SmartSniperRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/24/6</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_SmartSniperRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial/24/6</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <!--    Charge    -->
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_ChargeSidearm"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/24/1</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_ScatterCharger"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/64/3</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_ChargeDriver"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/12/5</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_EMPRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer_emp/12/5</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_EMPRifle"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer_emp/24/3</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_AssaultCharger"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/96/4</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_BurstCharger"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/96/4</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_CFR"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/24/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Gun_CFR"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_spacer/24/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+
+                <!--   Grenades   -->
+
+                <li Class="XmlExtensions.PatchOperationSafeAdd">
+                    <xpath>Defs/ThingDef[defName = "Weapon_GrenadeSmoke"]</xpath>
+                    <safetyDepth>1</safetyDepth>
+                    <value>
+                        <weaponTags>
+                            <li>ammo_industrial_fire/24/2</li>
+                        </weaponTags>
+                    </value>
+                </li>
+                
+            </operations>
+        </match>
+    </Operation>
+</Patch>
