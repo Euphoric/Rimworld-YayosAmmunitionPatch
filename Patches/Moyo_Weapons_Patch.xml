@@ -16,7 +16,7 @@
                     <safetyDepth>1</safetyDepth>
                     <value>
                         <weaponTags>
-                            <li>ammo_industrial/48/2</li>
+                            <li>ammo_industrial</li>
                         </weaponTags>
                     </value>
                 </li>

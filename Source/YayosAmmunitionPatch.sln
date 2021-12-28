@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YayosAmmunitionPatch", "YayosAmmunitionPatch.csproj", "{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E74E39EE-33DB-47E2-8AEA-8A98C6112125}
+	EndGlobalSection
+EndGlobal

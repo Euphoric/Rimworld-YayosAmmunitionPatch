@@ -8,68 +8,6 @@
         </mods>
         <match Class="PatchOperationSequence">
             <operations>
-
-                <!--    Industrial    -->
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_Revolver"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_industrial/288/1</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_Rifle"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_industrial/52/4</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_Machinegun"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_industrial/128/2</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_Machinegun"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_industrial/128/2</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_Cannon"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_industrial_fire/24/10</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_Machinegun"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_industrial/512/1</li>
-                        </weaponTags>
-                    </value>
-                </li>
                 
                 <!--    Spacer    -->
 
