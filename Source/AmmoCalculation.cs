@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Euphoric.YayosAmmunitionPatch
 {
@@ -18,8 +17,9 @@ namespace Euphoric.YayosAmmunitionPatch
             var shotsPerMinute = 60 / (parameter.Warmup + parameter.Cooldown + parameter.SecondsBetweenBurstShots * parameter.Burst) * parameter.Burst;
             shotsPerMinute = Math.Round(shotsPerMinute, 2);
 
-            var ammoPerMinute = (int)Math.Round(shotsPerMinute * ammoPerShot);
-            return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute);
+            var ammoPerMinute = shotsPerMinute * ammoPerShot;
+            var gunShots = (int)Math.Round(shotsPerMinute * 1.5);
+            return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute, gunShots);
         }
 
         private static double GetDamageToAmmoScale(AmmoType ammoType)
@@ -28,8 +28,16 @@ namespace Euphoric.YayosAmmunitionPatch
             {
                 case AmmoType.Industrial:
                     return 10;
+                case AmmoType.IndustrialFire:
+                    return 5;
+                case AmmoType.IndustrialSpecial:
+                    return 2;
                 case AmmoType.Spacer:
+                    return 4;
+                case AmmoType.SpacerFire:
                     return 3;
+                case AmmoType.SpacerSpecial:
+                    return 1.5;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(ammoType), ammoType, null);
             }

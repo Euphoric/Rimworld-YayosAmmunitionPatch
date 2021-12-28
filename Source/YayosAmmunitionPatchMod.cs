@@ -16,12 +16,13 @@ namespace Euphoric.YayosAmmunitionPatch
             StringBuilder patchedWeaponsLogMessage = new StringBuilder("Patched weapons:");
             StringBuilder ignoredWeaponsLogMessage = new StringBuilder("Ignored weapons:");
             
-            patchedWeaponsLogMessage.AppendLine($"Def name;Ammo type;Cooldown time;Warmup time;Burst shot count;Seconds between burst;Base damage;Armor penetration;Range;Accuracy touch (3);Accuracy short (12);Accuracy medium (25);Accuracy long (40);;Shots per minute;Average accuracy;Armor penetration rating;EffectiveDamage;Ammo per shot;Ammo per minute");
+            patchedWeaponsLogMessage.AppendLine($"Def name;Ammo type;Damage def;Damage armor category;Explosion radius;Cooldown time;Warmup time;Burst shot count;Seconds between burst;Base damage;Armor penetration;Range;Accuracy touch (3);Accuracy short (12);Accuracy medium (25);Accuracy long (40);;Shots per minute;Average accuracy;Armor penetration rating;EffectiveDamage;Ammo per shot;Ammo per minute");
             foreach (ThingDef thingDef in DefDatabase<ThingDef>.AllDefs.Where(t => t.HasComp(typeof(CompReloadable))))
             {
                 var props = thingDef.GetCompProperties<CompProperties_Reloadable>();
                 VerbProperties verb = thingDef.Verbs[0];
                 var projectile = verb?.defaultProjectile?.projectile;
+                var damageDef = projectile?.damageDef;
                 
                 var ammoType = GetLocalAmmoType(props.ammoDef);
                 if (ammoType != AmmoType.Unknown && projectile != null)
@@ -44,10 +45,10 @@ namespace Euphoric.YayosAmmunitionPatch
 
                     var gunAmmoSetting = AmmoCalculation.CalculateGunAmmoParameters(gunParameter);
 
-                    patchedWeaponsLogMessage.AppendLine($"{thingDef.defName};{props.ammoDef.defName};{cooldownTime};{verb.warmupTime};{verb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{verb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute}");
+                    patchedWeaponsLogMessage.AppendLine($"{thingDef.defName};{props.ammoDef.defName};{damageDef?.defName};{damageDef?.armorCategory?.defName};{projectile.explosionRadius};{cooldownTime};{verb.warmupTime};{verb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{verb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute}");
 
                     props.ammoCountPerCharge = gunAmmoSetting.AmmoPerShot;
-                    props.maxCharges = gunAmmoSetting.AmmoPerMinute; // TODO account for yayo's settings, maybe increase from 60s to 90s
+                    props.maxCharges = gunAmmoSetting.GunShots; // TODO account for yayo's settings
                 }
                 else
                 {
@@ -65,11 +66,27 @@ namespace Euphoric.YayosAmmunitionPatch
             {
                 return AmmoType.Industrial;
             }
+            if (ammoDef == ThingDef.Named("yy_ammo_industrial_fire"))
+            {
+                return AmmoType.IndustrialFire;
+            }
+            if (ammoDef == ThingDef.Named("yy_ammo_industrial_emp"))
+            {
+                return AmmoType.IndustrialSpecial;
+            }
             if (ammoDef == ThingDef.Named("yy_ammo_spacer"))
             {
                 return AmmoType.Spacer;
             }
-
+            if (ammoDef == ThingDef.Named("yy_ammo_spacer_fire"))
+            {
+                return AmmoType.SpacerFire;
+            }
+            if (ammoDef == ThingDef.Named("yy_ammo_spacer_emp"))
+            {
+                return AmmoType.SpacerSpecial;
+            }
+            
             return AmmoType.Unknown;
         }
     }

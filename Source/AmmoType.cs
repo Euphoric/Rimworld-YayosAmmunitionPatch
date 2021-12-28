@@ -4,6 +4,10 @@
     {
         Unknown,
         Industrial,
-        Spacer
+        IndustrialFire,
+        IndustrialSpecial,
+        Spacer,
+        SpacerFire,
+        SpacerSpecial
     }
 }

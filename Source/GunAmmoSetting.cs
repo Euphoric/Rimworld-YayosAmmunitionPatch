@@ -3,7 +3,7 @@
     public class GunAmmoSetting
     {
         public GunAmmoSetting(float averageAccuracy, double armorPenetrationRating, double effectiveDamage, int ammoPerShot,
-            double shotsPerMinute, int ammoPerMinute)
+            double shotsPerMinute, double ammoPerMinute, int gunShots)
         {
             AverageAccuracy = averageAccuracy;
             ArmorPenetrationRating = armorPenetrationRating;
@@ -11,6 +11,7 @@
             AmmoPerShot = ammoPerShot;
             ShotsPerMinute = shotsPerMinute;
             AmmoPerMinute = ammoPerMinute;
+            GunShots = gunShots;
         }
 
         public float AverageAccuracy { get; }
@@ -19,6 +20,7 @@
         public double EffectiveDamage { get; }
         public int AmmoPerShot { get; }
         public double ShotsPerMinute { get; }
-        public int AmmoPerMinute { get; }
+        public double AmmoPerMinute { get; }
+        public int GunShots { get; }
     }
 }
