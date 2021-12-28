@@ -9,38 +9,6 @@
         <match Class="PatchOperationSequence">
             <operations>
                 
-                <!--    Spacer    -->
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_TwinPistol"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/288/1</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_RoyalRifle"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/52/4</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "PN_RoyalLSW"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer_fire/24/9</li>
-                        </weaponTags>
-                    </value>
-                </li>
-                
             </operations>
         </match>
     </Operation>

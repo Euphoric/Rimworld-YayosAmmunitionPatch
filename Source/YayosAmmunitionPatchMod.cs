@@ -19,7 +19,8 @@ namespace Euphoric.YayosAmmunitionPatch
             foreach (ThingDef thingDef in DefDatabase<ThingDef>.AllDefs.Where(t => t.HasComp(typeof(CompReloadable))))
             {
                 var props = thingDef.GetCompProperties<CompProperties_Reloadable>();
-                if (props.ammoDef == ThingDef.Named("yy_ammo_industrial"))
+                var ammoType = GetLocalAmmoType(props.ammoDef);
+                if (ammoType != AmmoType.Unknown)
                 {
                     VerbProperties verb = thingDef.Verbs[0];
                     var secondsBetweenBurstShots = verb.ticksBetweenBurstShots / 60f;
@@ -33,7 +34,7 @@ namespace Euphoric.YayosAmmunitionPatch
                     var armorPenetration = projectile.GetArmorPenetration(1);
 
                     GunParameter gunParameter = new GunParameter(
-                        thingDef.defName,
+                        thingDef.defName, ammoType,
                         verb.warmupTime, cooldownTime, secondsBetweenBurstShots,
                         verb.burstShotCount,
                         baseDamage, armorPenetration, verb.range, accuracyTouch, accuracyShort, accuracyMedium,
@@ -49,6 +50,20 @@ namespace Euphoric.YayosAmmunitionPatch
             }
 
             Logger.Warning(sb.ToString());
+        }
+
+        private AmmoType GetLocalAmmoType(ThingDef ammoDef)
+        {
+            if (ammoDef == ThingDef.Named("yy_ammo_industrial"))
+            {
+                return AmmoType.Industrial;
+            }
+            if (ammoDef == ThingDef.Named("yy_ammo_spacer"))
+            {
+                return AmmoType.Spacer;
+            }
+
+            return AmmoType.Unknown;
         }
     }
 }

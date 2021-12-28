@@ -2,12 +2,13 @@
 {
     public class GunParameter
     {
-        public GunParameter(
-            string name, double warmup, double cooldown, double secondsBetweenBurstShots, int burst, int baseDamage, float armorPenetration,
+        public GunParameter(string name, AmmoType ammoType, double warmup, double cooldown,
+            double secondsBetweenBurstShots, int burst, int baseDamage, float armorPenetration,
             float maxRange,
             float accuracyTouch, float accuracyShort, float accuracyMedium, float accuracyLong)
         {
             Name = name;
+            AmmoType = ammoType;
             Warmup = warmup;
             Cooldown = cooldown;
             SecondsBetweenBurstShots = secondsBetweenBurstShots;
@@ -23,6 +24,7 @@
 
 
         public string Name { get; }
+        public AmmoType AmmoType { get; }
         public double Warmup { get; }
         public double Cooldown { get; }
         public double SecondsBetweenBurstShots { get; }

@@ -13,7 +13,7 @@ namespace Euphoric.YayosAmmunitionPatch
             var armorPenetrationRating = EstimatedArmorPenetrationRating(parameter.ArmorPenetration);
 
             var effectiveDamage = parameter.BaseDamage * averageAccuracy * armorPenetrationRating;
-            var ammoPerShot = (int)Math.Max(1, Math.Round(effectiveDamage * 6f));
+            var ammoPerShot = (int)Math.Max(1, Math.Round(effectiveDamage * GetDamageToAmmoScale(parameter.AmmoType)));
 
             var shotsPerMinute = 60 / (parameter.Warmup + parameter.Cooldown + parameter.SecondsBetweenBurstShots * parameter.Burst) * parameter.Burst;
             shotsPerMinute = Math.Round(shotsPerMinute, 2);
@@ -21,7 +21,20 @@ namespace Euphoric.YayosAmmunitionPatch
             var ammoPerMinute = (int)Math.Round(shotsPerMinute * ammoPerShot);
             return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute);
         }
-        
+
+        private static double GetDamageToAmmoScale(AmmoType ammoType)
+        {
+            switch (ammoType)
+            {
+                case AmmoType.Industrial:
+                    return 10;
+                case AmmoType.Spacer:
+                    return 3;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(ammoType), ammoType, null);
+            }
+        }
+
         private static double EstimatedArmorPenetrationRating(double armorPiercing)
         {
             if (armorPiercing <= 0.10) // 0.10 => 0.025

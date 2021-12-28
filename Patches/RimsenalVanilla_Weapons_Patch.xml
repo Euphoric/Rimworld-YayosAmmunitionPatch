@@ -36,16 +36,6 @@
                     <safetyDepth>1</safetyDepth>
                     <value>
                         <weaponTags>
-                            <li>ammo_primitive/24/1</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_ThrowingClubs"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
                             <li>ammo_none</li>
                         </weaponTags>
                     </value>
@@ -59,78 +49,6 @@
                     <value>
                         <weaponTags>
                             <li>ammo_industrial</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <!--    Charge    -->
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_ChargeSidearm"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/24/1</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_ScatterCharger"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/64/5</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_ChargeDriver"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/12/9</li>
-                        </weaponTags>
-                    </value>
-                </li>
-                
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_EMPRifle"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer_emp/24/5</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_AssaultCharger"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/128/4</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_BurstCharger"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/96/6</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_CFR"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_spacer/24/3</li>
                         </weaponTags>
                     </value>
                 </li>
