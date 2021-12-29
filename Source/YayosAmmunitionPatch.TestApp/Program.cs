@@ -46,7 +46,7 @@ namespace Euphoric.YayosAmmunitionPatch
                 sw.WriteLine($"Gun;Average accuracy;Armor piercing rating;Effective damage;Ammo use per shot;Shots per minute;Ammo use per minute");
                 foreach (var parameter in parameters)
                 {
-                    var calculation = AmmoCalculation.CalculateGunAmmoParameters(parameter);
+                    var calculation = AmmoCalculation.CalculateGunAmmoParameters(parameter, 1);
                     sw.WriteLine(
                         $"{parameter.Name};{calculation.AverageAccuracy};{calculation.ArmorPenetrationRating};{calculation.EffectiveDamage};{calculation.AmmoPerShot};{calculation.ShotsPerMinute};{calculation.AmmoPerMinute}");
                 }

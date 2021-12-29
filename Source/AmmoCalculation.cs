@@ -5,7 +5,7 @@ namespace Euphoric.YayosAmmunitionPatch
 {
     public static class AmmoCalculation
     {
-        public static GunAmmoSetting CalculateGunAmmoParameters(GunParameter parameter)
+        public static GunAmmoSetting CalculateGunAmmoParameters(GunParameter parameter, float maxAmmoSetting)
         {
             var averageAccuracy = AverageAccuracy(parameter);
             var armorPenetrationRating = AverageArmorPenetrationRating(parameter.ArmorPenetration);
@@ -17,7 +17,7 @@ namespace Euphoric.YayosAmmunitionPatch
             shotsPerMinute = Math.Round(shotsPerMinute, 2);
 
             var ammoPerMinute = shotsPerMinute * ammoPerShot;
-            var gunShots = (int)Math.Round(shotsPerMinute * 1.5);
+            var gunShots = (int)Math.Round(shotsPerMinute * 1.5 * maxAmmoSetting);
             return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute, gunShots);
         }
 
