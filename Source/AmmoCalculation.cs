@@ -42,7 +42,7 @@ namespace Euphoric.YayosAmmunitionPatch
             }
         }
 
-        private static double AverageArmorPenetrationRating(double armorPiercing)
+        public static double AverageArmorPenetrationRating(double armorPiercing)
         {
             if (armorPiercing <= 0.10) // 0.10 => 0.025
             {
@@ -76,22 +76,22 @@ namespace Euphoric.YayosAmmunitionPatch
             
             if (range <= 12)
             {
-                return (range - 12) / (12 - 3) * (1.0 - 0.75) + 0.75;
+                return (range - 0) / (12 - 3) * (1.0 - 0.75) + 0.75;
             }
 
             if (range <= 25)
             {
-                return (range - 25) / (25 - 12) * (1.0 - 1.0) + 1.0;
+                return (range - 12) / (25 - 12) * (1.0 - 1.0) + 1.0;
             }
 
             if (range <= 38)
             {
-                return (range - 38) / (38 - 25) * (1.0 - 0.2) + 0.2;
+                return (range - 25) / (38 - 25) * (1.0 - 0.2) + 0.2;
             }
             
             if (range <= 60)
             {
-                return (range - 60) / (60 - 38) * (0 - 0.2) + 0.2;
+                return (range - 38) / (60 - 38) * (0 - 0.2) + 0.2;
             }
 
             return 0;
