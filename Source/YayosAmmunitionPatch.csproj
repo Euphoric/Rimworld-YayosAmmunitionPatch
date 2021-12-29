@@ -3,8 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <OutDir>..\Assemblies\</OutDir>
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
     <AssemblyName>Euphoric.YayosAmmunitionPatch</AssemblyName>
     <RootNamespace>Euphoric.YayosAmmunitionPatch</RootNamespace>
   </PropertyGroup>

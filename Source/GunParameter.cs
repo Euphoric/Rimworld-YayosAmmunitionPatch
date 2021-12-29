@@ -3,9 +3,9 @@
     public class GunParameter
     {
         public GunParameter(string name, AmmoType ammoType, double warmup, double cooldown,
-            double secondsBetweenBurstShots, int burst, int baseDamage, float armorPenetration,
+            double secondsBetweenBurstShots, int burst, int baseDamage, double armorPenetration,
             float maxRange,
-            float accuracyTouch, float accuracyShort, float accuracyMedium, float accuracyLong)
+            double accuracyTouch, double accuracyShort, double accuracyMedium, double accuracyLong)
         {
             Name = name;
             AmmoType = ammoType;
@@ -33,16 +33,16 @@
 
         public int BaseDamage { get; }
 
-        public float ArmorPenetration { get; }
+        public double ArmorPenetration { get; }
 
         public float MaxRange { get; }
 
-        public float AccuracyTouch { get; }
-        public float AccuracyShort { get; }
-        public float AccuracyMedium { get; }
-        public float AccuracyLong { get; }
+        public double AccuracyTouch { get; }
+        public double AccuracyShort { get; }
+        public double AccuracyMedium { get; }
+        public double AccuracyLong { get; }
 
-        public float AccuracyAt(int range)
+        public double AccuracyAt(int range)
         {
             if (range > MaxRange)
                 return 0;

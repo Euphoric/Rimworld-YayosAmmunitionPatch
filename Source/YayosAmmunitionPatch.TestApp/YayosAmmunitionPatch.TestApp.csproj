@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <AssemblyName>Euphoric.YayosAmmunitionPatch.TestApp</AssemblyName>
+        <RootNamespace>Euphoric.YayosAmmunitionPatch</RootNamespace>
+        <OutputType>Exe</OutputType>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\YayosAmmunitionPatch.csproj" />
+    </ItemGroup>
+
+</Project>

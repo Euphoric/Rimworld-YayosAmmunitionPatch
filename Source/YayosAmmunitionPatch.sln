@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YayosAmmunitionPatch", "YayosAmmunitionPatch.csproj", "{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YayosAmmunitionPatch.TestApp", "YayosAmmunitionPatch.TestApp\YayosAmmunitionPatch.TestApp.csproj", "{DD43ECE8-0FA1-4A05-9C0B-CC8D1857C887}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{188F0E05-B5B3-4BEC-B8AE-B0EE4944ADBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD43ECE8-0FA1-4A05-9C0B-CC8D1857C887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD43ECE8-0FA1-4A05-9C0B-CC8D1857C887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD43ECE8-0FA1-4A05-9C0B-CC8D1857C887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD43ECE8-0FA1-4A05-9C0B-CC8D1857C887}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
