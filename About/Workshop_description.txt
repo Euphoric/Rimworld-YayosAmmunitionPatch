@@ -4,13 +4,10 @@ Patches Yayo's ammunition sytem to be more interesting and have more significant
 
 [h2]Notable changes[/h2]
 [list]
-  [*] Change weapon's ammo requirement per shot and how much they carry.
-      Supported mods:
+  [*] Calculates an "effective damage" of a weapon based on it's base damage, armor penetration and accuracy. From this, the mod changes how much each shot costs in ammunition. This means that, as long as mod uses vanilla gun mechanics, it should be compatible. Incompatiblity is mostly in mod doing something special for gun mechanics, thus not having the vanilla parameter from which the "effective damage" is calculated.
+      Known unsupported mods:
   [list]
-    [*] Rimworld Core
-    [*] [b]Rimsenal - Augmented Vanilla Pack[/b] - Recommended as it adds more weapon variety
-    [*] Moyo-From the depth
-    [*] Paniel the Automata
+    [*] Epona
   [/list]
   [*] Changes how much ammo is produced (3x more) and ammo stack sizes (4x more) to better fit above changes
   [*] Make ammo require specific research before it can be produced
