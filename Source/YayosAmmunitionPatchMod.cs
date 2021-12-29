@@ -68,6 +68,21 @@ namespace Euphoric.YayosAmmunitionPatch
 
         private AmmoType GetLocalAmmoType(ThingDef ammoDef)
         {
+            if (ammoDef == ThingDef.Named("yy_ammo_primitive"))
+            {
+                return AmmoType.Primitive;
+            }
+
+            if (ammoDef == ThingDef.Named("yy_ammo_primitive_fire"))
+            {
+                return AmmoType.PrimitiveFire;
+            }
+
+            if (ammoDef == ThingDef.Named("yy_ammo_primitive_emp"))
+            {
+                return AmmoType.PrimitiveSpecial;
+            }
+            
             if (ammoDef == ThingDef.Named("yy_ammo_industrial"))
             {
                 return AmmoType.Industrial;

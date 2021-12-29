@@ -25,6 +25,12 @@ namespace Euphoric.YayosAmmunitionPatch
         {
             switch (ammoType)
             {
+                case AmmoType.Primitive:
+                    return 3.0;
+                case AmmoType.PrimitiveFire:
+                    return 2.1;
+                case AmmoType.PrimitiveSpecial:
+                    return 0.9;
                 case AmmoType.Industrial:
                     return 1.0;
                 case AmmoType.IndustrialFire:
