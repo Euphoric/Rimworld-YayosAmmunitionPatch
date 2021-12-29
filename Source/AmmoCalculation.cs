@@ -26,17 +26,17 @@ namespace Euphoric.YayosAmmunitionPatch
             switch (ammoType)
             {
                 case AmmoType.Industrial:
-                    return 6;
+                    return 1.0;
                 case AmmoType.IndustrialFire:
-                    return 3.5;
+                    return 0.7;
                 case AmmoType.IndustrialSpecial:
-                    return 1.5;
+                    return 0.3;
                 case AmmoType.Spacer:
-                    return 3;
+                    return 0.5;
                 case AmmoType.SpacerFire:
-                    return 2;
+                    return 0.25;
                 case AmmoType.SpacerSpecial:
-                    return 1;
+                    return 0.1;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(ammoType), ammoType, null);
             }
@@ -44,24 +44,29 @@ namespace Euphoric.YayosAmmunitionPatch
 
         public static double AverageArmorPenetrationRating(double armorPiercing)
         {
-            if (armorPiercing <= 0.10) // 0.10 => 0.025
+            if (armorPiercing <= 0.00)
             {
-                return 0.025;
+                return 0.45;
             }
 
-            if (armorPiercing <= 0.65) // 0.65 => 0.8
+            if (armorPiercing <= 0.36)
             {
-                return (armorPiercing - 0.10) / (0.65 - 0.10) * (0.8 - 0.025) + 0.025;
+                return (armorPiercing - 0.00) / (0.36 - 0.00) * (0.76 - 0.45) + 0.45;
             }
 
-            if (armorPiercing <= 1.00) // 1.00 => 0.95
+            if (armorPiercing <= 0.80)
             {
-                return (armorPiercing - 0.65) / (1.00 - 0.65) * (0.95 - 0.8) + 0.8;
+                return (armorPiercing - 0.36) / (0.80 - 0.36) * (0.925 - 0.76) + 0.76;
             }
 
-            if (armorPiercing <= 1.60) // 160 => 1
+            if (armorPiercing <= 1.30)
             {
-                return (armorPiercing - 1.00) / (1.60 - 1.00) * (1.0 - 0.95) + 0.95;
+                return (armorPiercing - 0.80) / (1.30 - 0.80) * (0.986 - 0.925) + 0.925;
+            }
+            
+            if (armorPiercing <= 2.00)
+            {
+                return (armorPiercing - 1.30) / (2.00 - 1.30) * (1.00 - 0.986) + 0.986;
             }
 
             return 1;

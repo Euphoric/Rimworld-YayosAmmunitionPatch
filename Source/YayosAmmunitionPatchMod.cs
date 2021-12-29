@@ -13,8 +13,10 @@ namespace Euphoric.YayosAmmunitionPatch
 
         public override void DefsLoaded()
         {
-            StringBuilder patchedWeaponsLogMessage = new StringBuilder("Patched weapons:");
-            StringBuilder ignoredWeaponsLogMessage = new StringBuilder("Ignored weapons:");
+            StringBuilder patchedWeaponsLogMessage = new StringBuilder();
+            patchedWeaponsLogMessage.AppendLine("Patched weapons:");
+            StringBuilder ignoredWeaponsLogMessage = new StringBuilder();
+            ignoredWeaponsLogMessage.AppendLine("Ignored weapons:");
             
             patchedWeaponsLogMessage.AppendLine($"Def name;Ammo type;Damage def;Damage armor category;Explosion radius;Cooldown time;Warmup time;Burst shot count;Seconds between burst;Base damage;Armor penetration;Range;Accuracy touch (3);Accuracy short (12);Accuracy medium (25);Accuracy long (40);;Shots per minute;Average accuracy;Armor penetration rating;EffectiveDamage;Ammo per shot;Ammo per minute");
             foreach (ThingDef thingDef in DefDatabase<ThingDef>.AllDefs.Where(t => t.HasComp(typeof(CompReloadable))))
