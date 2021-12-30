@@ -9,8 +9,11 @@ namespace Euphoric.YayosAmmunitionPatch
         {
             var averageAccuracy = AverageAccuracy(parameter);
             var armorPenetrationRating = AverageArmorPenetrationRating(parameter.ArmorPenetration);
+            var explosionRating = AverageExplosionRating(parameter.ExplosionRadius);
 
-            var effectiveDamage = parameter.BaseDamage * averageAccuracy * armorPenetrationRating;
+            var leavesBehindAdditionaDamage = GetLeavesBehindDamage(parameter.LeavesBehind);
+            
+            var effectiveDamage = (parameter.BaseDamage+leavesBehindAdditionaDamage) * averageAccuracy * armorPenetrationRating * explosionRating;
             var ammoPerShot = (int)Math.Max(1, Math.Round(effectiveDamage * GetDamageToAmmoScale(parameter.AmmoType)));
 
             var shotsPerMinute = 60 / (parameter.Warmup + parameter.Cooldown + parameter.SecondsBetweenBurstShots * parameter.Burst) * parameter.Burst;
@@ -18,7 +21,12 @@ namespace Euphoric.YayosAmmunitionPatch
 
             var ammoPerMinute = shotsPerMinute * ammoPerShot;
             var gunShots = (int)Math.Round(shotsPerMinute * 1.5 * maxAmmoSetting);
-            return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute, gunShots);
+            return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, explosionRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute, gunShots);
+        }
+
+        private static double AverageExplosionRating(double explosionRadius)
+        {
+            return Math.Max(1, explosionRadius);
         }
 
         private static double GetDamageToAmmoScale(AmmoType ammoType)
@@ -116,7 +124,26 @@ namespace Euphoric.YayosAmmunitionPatch
         private static double AverageAccuracy(GunParameter parameter)
         {
             var averageAccuracy = Enumerable.Range(3, 60).Select(rg=>parameter.AccuracyAt(rg)*RangeAccuracyBias(rg)).Sum();
-            return averageAccuracy / RangeAccuracyBiasTotal.Value;
+            var averageAccuracyForcedMiss = Enumerable.Range(3, 60).Select(rg=> parameter.ForcedAccuracyAt(rg)*RangeAccuracyBias(rg)).Sum();
+
+            return Math.Max(averageAccuracy, averageAccuracyForcedMiss) / RangeAccuracyBiasTotal.Value;
+        }
+        
+        private static double GetLeavesBehindDamage(LeavesBehind leavesBehind)
+        {
+            switch (leavesBehind)
+            {
+                case LeavesBehind.Nothing:
+                    return 0;
+                case LeavesBehind.Fuel:
+                    return 30;
+                case LeavesBehind.Smoke:
+                    return 20;
+                case LeavesBehind.Gas:
+                    return 30;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(leavesBehind), leavesBehind, null);
+            }
         }
     }
 }

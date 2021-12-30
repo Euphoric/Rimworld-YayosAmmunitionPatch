@@ -2,11 +2,12 @@
 {
     public class GunAmmoSetting
     {
-        public GunAmmoSetting(double averageAccuracy, double armorPenetrationRating, double effectiveDamage, int ammoPerShot,
+        public GunAmmoSetting(double averageAccuracy, double armorPenetrationRating, double explosionRating, double effectiveDamage, int ammoPerShot,
             double shotsPerMinute, double ammoPerMinute, int gunShots)
         {
             AverageAccuracy = averageAccuracy;
             ArmorPenetrationRating = armorPenetrationRating;
+            ExplosionRating = explosionRating;
             EffectiveDamage = effectiveDamage;
             AmmoPerShot = ammoPerShot;
             ShotsPerMinute = shotsPerMinute;
@@ -16,6 +17,7 @@
 
         public double AverageAccuracy { get; }
         public double ArmorPenetrationRating { get; }
+        public double ExplosionRating { get; }
 
         public double EffectiveDamage { get; }
         public int AmmoPerShot { get; }

@@ -12,26 +12,6 @@
                 <!--    Primitive    -->
 
                 <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_Blowgun"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_primitive/24/2</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Gun_ThrowingAxes"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_primitive/24/3</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
                     <xpath>Defs/ThingDef[defName = "Gun_ThrowingClubs"]</xpath>
                     <safetyDepth>1</safetyDepth>
                     <value>
@@ -49,18 +29,6 @@
                     <value>
                         <weaponTags>
                             <li>ammo_industrial</li>
-                        </weaponTags>
-                    </value>
-                </li>
-
-                <!--   Grenades   -->
-
-                <li Class="XmlExtensions.PatchOperationSafeAdd">
-                    <xpath>Defs/ThingDef[defName = "Weapon_GrenadeSmoke"]</xpath>
-                    <safetyDepth>1</safetyDepth>
-                    <value>
-                        <weaponTags>
-                            <li>ammo_industrial_fire/24/2</li>
                         </weaponTags>
                     </value>
                 </li>

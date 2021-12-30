@@ -1,11 +1,14 @@
-﻿namespace Euphoric.YayosAmmunitionPatch
+﻿using System;
+
+namespace Euphoric.YayosAmmunitionPatch
 {
     public class GunParameter
     {
         public GunParameter(string name, AmmoType ammoType, double warmup, double cooldown,
             double secondsBetweenBurstShots, int burst, int baseDamage, double armorPenetration,
-            float maxRange,
-            double accuracyTouch, double accuracyShort, double accuracyMedium, double accuracyLong)
+            double maxRange,
+            double accuracyTouch, double accuracyShort, double accuracyMedium, double accuracyLong,
+            double forcedMissRadius, double explosionRadius, LeavesBehind leavesBehind = LeavesBehind.Nothing)
         {
             Name = name;
             AmmoType = ammoType;
@@ -20,6 +23,9 @@
             AccuracyShort = accuracyShort;
             AccuracyMedium = accuracyMedium;
             AccuracyLong = accuracyLong;
+            ForcedMissRadius = forcedMissRadius;
+            ExplosionRadius = explosionRadius;
+            LeavesBehind = leavesBehind;
         }
 
 
@@ -35,12 +41,15 @@
 
         public double ArmorPenetration { get; }
 
-        public float MaxRange { get; }
+        public double MaxRange { get; }
 
         public double AccuracyTouch { get; }
         public double AccuracyShort { get; }
         public double AccuracyMedium { get; }
         public double AccuracyLong { get; }
+        public double ForcedMissRadius { get; }
+        public double ExplosionRadius { get; }
+        public LeavesBehind LeavesBehind { get; }
 
         public double AccuracyAt(int range)
         {
@@ -70,6 +79,17 @@
             {
                 return AccuracyLong;
             }
+        }
+
+        public double ForcedAccuracyAt(int range)
+        {
+            if (range > MaxRange)
+                return 0.0;
+         
+            // 0.5 => 0.9
+            // 3.0 => 0.3
+            var forcedAccuracyAt = (ForcedMissRadius - 0.5) / (3.0 - 0.5) * (0.9 - 0.3) + 0.3;
+            return Math.Max(forcedAccuracyAt, 0.1);
         }
     }
 }

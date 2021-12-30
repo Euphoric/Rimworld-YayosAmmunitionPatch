@@ -13,4 +13,12 @@
         SpacerFire,
         SpacerSpecial,
     }
+
+    public enum LeavesBehind
+    {
+        Nothing,
+        Fuel,
+        Smoke,
+        Gas
+    }
 }
