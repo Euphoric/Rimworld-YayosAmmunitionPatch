@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -19,6 +20,19 @@ namespace Euphoric.YayosAmmunitionPatch
 
         private static void CalculateSampleGuns()
         {
+            var ammoCostRatios = new Dictionary<AmmoType, float>()
+            {
+                {AmmoType.Industrial, 1f},
+                {AmmoType.IndustrialFire, 0.9838207f},
+                {AmmoType.IndustrialSpecial, 1.001689f},
+                {AmmoType.Spacer, 1.496123f},
+                {AmmoType.SpacerFire, 1.467383f},
+                {AmmoType.SpacerSpecial, 1.43f},
+                {AmmoType.Primitive, 0.4918457f},
+                {AmmoType.PrimitiveFire, 0.4823085f},
+                {AmmoType.PrimitiveSpecial, 0.497023f},
+            };
+            
             var parameters = new GunParameter[]
             {
                 new GunParameter("Revolver", AmmoType.Industrial, 0.3, 1.6, 0.25, 1, 12, 0.18, 26, 0.80, 0.75, 0.45,
@@ -56,7 +70,7 @@ namespace Euphoric.YayosAmmunitionPatch
                     $"Gun;Average accuracy;Armor piercing rating;Explosion rating;Effective damage;Ammo use per shot;Shots per minute;Ammo use per minute");
                 foreach (var parameter in parameters)
                 {
-                    var calculation = AmmoCalculation.CalculateGunAmmoParameters(parameter, 1);
+                    var calculation = AmmoCalculation.CalculateGunAmmoParameters(parameter, ammoCostRatios, 1);
                     sw.WriteLine(
                         $"{parameter.Name};{calculation.AverageAccuracy};{calculation.ArmorPenetrationRating};{calculation.ExplosionRating};{calculation.EffectiveDamage};{calculation.AmmoPerShot};{calculation.ShotsPerMinute};{calculation.AmmoPerMinute}");
                 }

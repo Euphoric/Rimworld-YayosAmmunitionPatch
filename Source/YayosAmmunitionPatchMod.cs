@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HugsLib;
@@ -13,6 +14,50 @@ namespace Euphoric.YayosAmmunitionPatch
 
         public override void DefsLoaded()
         {
+            var ammoCostRatios = CalculateAmmoCostRatios();
+            PatchWeapons(ammoCostRatios);
+        }
+
+        private Dictionary<AmmoType, float> CalculateAmmoCostRatios()
+        {
+            Dictionary<AmmoType, float> ammoRatios = new Dictionary<AmmoType, float>();
+            ammoRatios[AmmoType.Industrial] = 1;
+            var industrialPrice = ThingDef.Named("yy_ammo_industrial").GetStatValueAbstract(StatDefOf.MarketValue);
+
+            ammoRatios[AmmoType.IndustrialFire] =
+                ThingDef.Named("yy_ammo_industrial_fire").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+            ammoRatios[AmmoType.IndustrialSpecial] =
+                ThingDef.Named("yy_ammo_industrial_emp").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+            
+            ammoRatios[AmmoType.Spacer] =
+                ThingDef.Named("yy_ammo_spacer").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+            ammoRatios[AmmoType.SpacerFire] =
+                ThingDef.Named("yy_ammo_spacer_fire").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+            ammoRatios[AmmoType.SpacerSpecial] =
+                ThingDef.Named("yy_ammo_spacer_emp").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+            
+            ammoRatios[AmmoType.Primitive] =
+                ThingDef.Named("yy_ammo_primitive").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+            ammoRatios[AmmoType.PrimitiveFire] =
+                ThingDef.Named("yy_ammo_primitive_fire").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+            ammoRatios[AmmoType.PrimitiveSpecial] =
+                ThingDef.Named("yy_ammo_primitive_emp").GetStatValueAbstract(StatDefOf.MarketValue) / industrialPrice;
+
+            StringBuilder ammoCostRatioMessage = new StringBuilder();
+            ammoCostRatioMessage.AppendLine("Ammo cost ratios:");
+
+            foreach (var ammoRatio in ammoRatios)
+            {
+                ammoCostRatioMessage.AppendLine($"{ammoRatio.Key}:${ammoRatio.Value}");
+            }
+            
+            Logger.Message(ammoCostRatioMessage.ToString());
+            
+            return ammoRatios;
+        }
+
+        private void PatchWeapons(Dictionary<AmmoType, float> ammoCostRatios)
+        {
             StringBuilder patchedWeaponsLogMessage = new StringBuilder();
             patchedWeaponsLogMessage.AppendLine("Patched weapons:");
             StringBuilder ignoredWeaponsLogMessage = new StringBuilder();
@@ -20,7 +65,7 @@ namespace Euphoric.YayosAmmunitionPatch
 
             patchedWeaponsLogMessage.AppendLine(
                 $"Def name;Label;Mod;Ammo type;Damage def;Damage armor category;Projectile class;Explosion radius;Explosion spawn;Cooldown time;Warmup time;Burst shot count;Seconds between burst;Base damage;Armor penetration;Range;Accuracy touch (3);Accuracy short (12);Accuracy medium (25);Accuracy long (40);Forced miss radius;;Shots per minute;Average accuracy;Armor penetration rating;Explosion rating;Effective damage;Ammo per shot;Ammo per minute;Cost per shot;Cost per full;Ingredients per shot");
-            var reloadableThings = 
+            var reloadableThings =
                 DefDatabase<ThingDef>.AllDefs.Where(t => t.HasComp(typeof(CompReloadable)));
             foreach (ThingDef thingDef in reloadableThings)
             {
@@ -41,20 +86,22 @@ namespace Euphoric.YayosAmmunitionPatch
                     var accuracyMedium = thingDef.statBases.GetStatValueFromList(StatDefOf.AccuracyMedium, 0.0f);
                     var accuracyLong = thingDef.statBases.GetStatValueFromList(StatDefOf.AccuracyLong, 0.0f);
                     var armorPenetration = projectileParams.GetArmorPenetration(1);
-                    var leavesBehind = GetLeavesBehind(projectileParams.preExplosionSpawnThingDef, projectileParams.postExplosionSpawnThingDef);
-                    
+                    var leavesBehind = GetLeavesBehind(projectileParams.preExplosionSpawnThingDef,
+                        projectileParams.postExplosionSpawnThingDef);
+
                     GunParameter gunParameter = new GunParameter(
                         thingDef.defName, ammoType,
                         verb.warmupTime, cooldownTime, secondsBetweenBurstShots,
                         verb.burstShotCount,
-                        baseDamage, armorPenetration, 
+                        baseDamage, armorPenetration,
                         verb.range, accuracyTouch, accuracyShort, accuracyMedium, accuracyLong,
                         verb.ForcedMissRadius, projectileParams.explosionRadius, leavesBehind);
 
                     var gunAmmoSetting =
-                        AmmoCalculation.CalculateGunAmmoParameters(gunParameter, yayoCombat.yayoCombat.maxAmmo);
+                        AmmoCalculation.CalculateGunAmmoParameters(gunParameter, ammoCostRatios, yayoCombat.yayoCombat.maxAmmo);
 
-                    var leavesBehindStr = $"{projectileParams.preExplosionSpawnThingDef}|{projectileParams.postExplosionSpawnThingDef}";
+                    var leavesBehindStr =
+                        $"{projectileParams.preExplosionSpawnThingDef}|{projectileParams.postExplosionSpawnThingDef}";
 
                     props.ammoCountPerCharge = gunAmmoSetting.AmmoPerShot;
                     props.maxCharges = gunAmmoSetting.GunShots;
@@ -65,7 +112,7 @@ namespace Euphoric.YayosAmmunitionPatch
                     thingDef.comps.Add(statsExtension);
 
                     var usageCost = statsExtension.CalculateUsageCost();
-                    
+
                     patchedWeaponsLogMessage.AppendLine(
                         $"{thingDef.defName};{thingDef.label};{thingDef.modContentPack?.Name};{props.ammoDef?.defName};{damageDef?.defName};{damageDef?.armorCategory?.defName};{defaultProjectile.thingClass?.Name};{projectileParams.explosionRadius};{leavesBehindStr};{cooldownTime};{verb.warmupTime};{verb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{verb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};{verb.ForcedMissRadius};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.ExplosionRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute};{usageCost.CostPerShot};{usageCost.CostPerFull};{string.Join("|", usageCost.IngredientsPerShot)}");
                 }

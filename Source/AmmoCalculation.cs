@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Euphoric.YayosAmmunitionPatch
 {
     public static class AmmoCalculation
     {
-        public static GunAmmoSetting CalculateGunAmmoParameters(GunParameter parameter, float maxAmmoSetting)
+        public static GunAmmoSetting CalculateGunAmmoParameters(GunParameter parameter,
+            Dictionary<AmmoType, float> ammoCostRatios, float maxAmmoSetting)
         {
             var averageAccuracy = AverageAccuracy(parameter);
             var armorPenetrationRating = AverageArmorPenetrationRating(parameter.ArmorPenetration);
@@ -14,7 +16,8 @@ namespace Euphoric.YayosAmmunitionPatch
             var leavesBehindAdditionaDamage = GetLeavesBehindDamage(parameter.LeavesBehind);
             
             var effectiveDamage = (parameter.BaseDamage+leavesBehindAdditionaDamage) * averageAccuracy * armorPenetrationRating * explosionRating;
-            var ammoPerShot = (int)Math.Max(1, Math.Round(effectiveDamage * GetDamageToAmmoScale(parameter.AmmoType)));
+            var damageToAmmoScale = 2 / ammoCostRatios[parameter.AmmoType];
+            var ammoPerShot = (int)Math.Max(1, Math.Round(effectiveDamage * damageToAmmoScale));
 
             var shotsPerMinute = 60 / (parameter.Warmup + parameter.Cooldown + parameter.SecondsBetweenBurstShots * (parameter.Burst - 1)) * parameter.Burst;
             shotsPerMinute = Math.Round(shotsPerMinute, 2);
@@ -40,17 +43,17 @@ namespace Euphoric.YayosAmmunitionPatch
                 case AmmoType.PrimitiveSpecial:
                     return 0.9;
                 case AmmoType.Industrial:
-                    return 1.0;
+                    return 2.0;
                 case AmmoType.IndustrialFire:
-                    return 0.7;
+                    return 1.5;
                 case AmmoType.IndustrialSpecial:
-                    return 0.3;
+                    return 1;
                 case AmmoType.Spacer:
-                    return 0.5;
+                    return 1;
                 case AmmoType.SpacerFire:
-                    return 0.25;
+                    return 0.5;
                 case AmmoType.SpacerSpecial:
-                    return 0.1;
+                    return 0.25;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(ammoType), ammoType, null);
             }
