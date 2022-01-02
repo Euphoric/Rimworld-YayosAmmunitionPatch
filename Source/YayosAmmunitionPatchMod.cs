@@ -19,7 +19,7 @@ namespace Euphoric.YayosAmmunitionPatch
             ignoredWeaponsLogMessage.AppendLine("Ignored weapons:");
 
             patchedWeaponsLogMessage.AppendLine(
-                $"Def name;Label;Mod;Ammo type;Damage def;Damage armor category;Projectile class;Explosion radius;Explosion spawn;Cooldown time;Warmup time;Burst shot count;Seconds between burst;Base damage;Armor penetration;Range;Accuracy touch (3);Accuracy short (12);Accuracy medium (25);Accuracy long (40);Forced miss radius;;Shots per minute;Average accuracy;Armor penetration rating;Explosion rating;Effective damage;Ammo per shot;Ammo per minute");
+                $"Def name;Label;Mod;Ammo type;Damage def;Damage armor category;Projectile class;Explosion radius;Explosion spawn;Cooldown time;Warmup time;Burst shot count;Seconds between burst;Base damage;Armor penetration;Range;Accuracy touch (3);Accuracy short (12);Accuracy medium (25);Accuracy long (40);Forced miss radius;;Shots per minute;Average accuracy;Armor penetration rating;Explosion rating;Effective damage;Ammo per shot;Ammo per minute;Cost per shot;Cost per full;Ingredients per shot");
             var reloadableThings = 
                 DefDatabase<ThingDef>.AllDefs.Where(t => t.HasComp(typeof(CompReloadable)));
             foreach (ThingDef thingDef in reloadableThings)
@@ -55,11 +55,19 @@ namespace Euphoric.YayosAmmunitionPatch
                         AmmoCalculation.CalculateGunAmmoParameters(gunParameter, yayoCombat.yayoCombat.maxAmmo);
 
                     var leavesBehindStr = $"{projectileParams.preExplosionSpawnThingDef}|{projectileParams.postExplosionSpawnThingDef}";
-                    patchedWeaponsLogMessage.AppendLine(
-                        $"{thingDef.defName};{thingDef.label};{thingDef.modContentPack?.Name};{props.ammoDef?.defName};{damageDef?.defName};{damageDef?.armorCategory?.defName};{defaultProjectile.thingClass?.Name};{projectileParams.explosionRadius};{leavesBehindStr};{cooldownTime};{verb.warmupTime};{verb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{verb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};{verb.ForcedMissRadius};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.ExplosionRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute}");
-                    
+
                     props.ammoCountPerCharge = gunAmmoSetting.AmmoPerShot;
                     props.maxCharges = gunAmmoSetting.GunShots;
+
+                    var statsExtension = new CompProperties_ReloadableDisplayStatsExtension();
+                    statsExtension.CompReloadableProperties = props;
+                    statsExtension.AmmoRecipe = GetAmmoRecipe(props.ammoDef);
+                    thingDef.comps.Add(statsExtension);
+
+                    var usageCost = statsExtension.CalculateUsageCost();
+                    
+                    patchedWeaponsLogMessage.AppendLine(
+                        $"{thingDef.defName};{thingDef.label};{thingDef.modContentPack?.Name};{props.ammoDef?.defName};{damageDef?.defName};{damageDef?.armorCategory?.defName};{defaultProjectile.thingClass?.Name};{projectileParams.explosionRadius};{leavesBehindStr};{cooldownTime};{verb.warmupTime};{verb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{verb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};{verb.ForcedMissRadius};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.ExplosionRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute};{usageCost.CostPerShot};{usageCost.CostPerFull};{string.Join("|", usageCost.IngredientsPerShot)}");
                 }
                 else
                 {
@@ -70,6 +78,17 @@ namespace Euphoric.YayosAmmunitionPatch
 
             Logger.Message(patchedWeaponsLogMessage.ToString());
             //Logger.Message(ignoredWeaponsLogMessage.ToString());
+        }
+
+        private RecipeDef GetAmmoRecipe(ThingDef ammoDef)
+        {
+            var ammoRecipe = DefDatabase<RecipeDef>.AllDefs.FirstOrDefault(rec => rec.products.FirstOrDefault()?.thingDef == ammoDef);
+            if (ammoRecipe == null)
+            {
+                throw new Exception("Didn't find recipe for " + ammoDef.defName);
+            }
+
+            return ammoRecipe;
         }
 
         private AmmoType GetLocalAmmoType(ThingDef ammoDef)
