@@ -258,7 +258,7 @@
         <safetyDepth>1</safetyDepth>
         <value>
             <products>
-                <yy_ammo_spacer_emp>63</yy_ammo_spacer_emp>
+                <yy_ammo_spacer_emp>180</yy_ammo_spacer_emp>
             </products>
             <researchPrerequisites>
                 <li>ChargedShot</li>
@@ -271,7 +271,7 @@
         <safetyDepth>1</safetyDepth>
         <value>
             <products>
-                <yy_ammo_spacer_emp>630</yy_ammo_spacer_emp>
+                <yy_ammo_spacer_emp>1800</yy_ammo_spacer_emp>
             </products>
             <researchPrerequisites>
                 <li>ChargedShot</li>
