@@ -21,6 +21,9 @@ Patches Yayo's ammunition sytem to be more interesting and have more significant
   [/list]
 [/list]
 
+[h3]List of sample weapons and their settings[/h3]
+https://docs.google.com/spreadsheets/d/1OyA8vU0nzao0OFalPzwEZFJ8VO2I_Pdb08Uf1fLHmWs/edit?usp=sharing [[ copy the link and paste it into a browser as steam thinks it is a dangerous link ]]
+
 [h2]Contribution[/h2]
 
 Issues, bug reports and feature requests go on [url=https://github.com/Euphoric/Rimworld-YayosAmmunitionPatch]GitHub page[/url].
