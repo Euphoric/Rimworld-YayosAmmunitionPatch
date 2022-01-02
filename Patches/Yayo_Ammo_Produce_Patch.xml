@@ -2,9 +2,126 @@
 
 <Patch>
 
+    <!--  Primitive  -->
+    <!--Makes primitive ammo use only wood. This simplifies cost calculation. Same as other types.-->
+    <Operation Class="XmlExtensions.PatchOperationSafeReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive"]</xpath>
+        <safetyDepth>0</safetyDepth>
+        <value>
+            <ingredients>
+                <li>
+                    <filter>
+                        <thingDefs>
+                            <li>WoodLog</li>
+                        </thingDefs>
+                    </filter>
+                    <count>13</count>
+                </li>
+            </ingredients>
+            <fixedIngredientFilter>
+                <thingDefs>
+                    <li>WoodLog</li>
+                </thingDefs>
+            </fixedIngredientFilter>
+            <defaultIngredientFilter>
+                <thingDefs>
+                    <li>WoodLog</li>
+                </thingDefs>
+            </defaultIngredientFilter>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive10"]</xpath>
+        <safetyDepth>0</safetyDepth>
+        <value>
+            <ingredients>
+                <li>
+                    <filter>
+                        <thingDefs>
+                            <li>WoodLog</li>
+                        </thingDefs>
+                    </filter>
+                    <count>130</count>
+                </li>
+            </ingredients>
+            <fixedIngredientFilter>
+                <thingDefs>
+                    <li>WoodLog</li>
+                </thingDefs>
+            </fixedIngredientFilter>
+            <defaultIngredientFilter>
+                <thingDefs>
+                    <li>WoodLog</li>
+                </thingDefs>
+            </defaultIngredientFilter>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive"]</xpath>
+        <safetyDepth>1</safetyDepth>
+        <value>
+            <products>
+                <yy_ammo_primitive>63</yy_ammo_primitive>
+            </products>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive10"]</xpath>
+        <safetyDepth>1</safetyDepth>
+        <value>
+            <products>
+                <yy_ammo_primitive>630</yy_ammo_primitive>
+            </products>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive_fire"]</xpath>
+        <safetyDepth>1</safetyDepth>
+        <value>
+            <products>
+                <yy_ammo_primitive_fire>57</yy_ammo_primitive_fire>
+            </products>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive_fire10"]</xpath>
+        <safetyDepth>1</safetyDepth>
+        <value>
+            <products>
+                <yy_ammo_primitive_fire>570</yy_ammo_primitive_fire>
+            </products>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive_emp"]</xpath>
+        <safetyDepth>1</safetyDepth>
+        <value>
+            <products>
+                <yy_ammo_primitive_emp>60</yy_ammo_primitive_emp>
+            </products>
+        </value>
+    </Operation>
+
+    <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
+        <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_primitive_emp10"]</xpath>
+        <safetyDepth>1</safetyDepth>
+        <value>
+            <products>
+                <yy_ammo_primitive_emp>600</yy_ammo_primitive_emp>
+            </products>
+        </value>
+    </Operation>
+    
     <!--  Industrial  -->
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_industrial"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_industrial>60</yy_ammo_industrial>
@@ -17,6 +134,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_industrial10"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_industrial>600</yy_ammo_industrial>
@@ -29,6 +147,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_industrial_fire"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_industrial_fire>60</yy_ammo_industrial_fire>
@@ -41,6 +160,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_industrial_fire10"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_industrial_fire>600</yy_ammo_industrial_fire>
@@ -53,6 +173,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_industrial_emp"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_industrial_emp>63</yy_ammo_industrial_emp>
@@ -65,6 +186,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_industrial_emp10"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_industrial_emp>630</yy_ammo_industrial_emp>
@@ -79,6 +201,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_spacer"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_spacer>63</yy_ammo_spacer>
@@ -91,6 +214,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_spacer10"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_spacer>630</yy_ammo_spacer>
@@ -103,6 +227,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_spacer_fire"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_spacer_fire>60</yy_ammo_spacer_fire>
@@ -116,6 +241,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_spacer_fire10"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_spacer_fire>600</yy_ammo_spacer_fire>
@@ -129,6 +255,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_spacer_emp"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_spacer_emp>63</yy_ammo_spacer_emp>
@@ -141,6 +268,7 @@
 
     <Operation Class="XmlExtensions.PatchOperationSafeAddOrReplace">
         <xpath>Defs/RecipeDef[defName = "Make_yy_ammo_spacer_emp10"]</xpath>
+        <safetyDepth>1</safetyDepth>
         <value>
             <products>
                 <yy_ammo_spacer_emp>630</yy_ammo_spacer_emp>

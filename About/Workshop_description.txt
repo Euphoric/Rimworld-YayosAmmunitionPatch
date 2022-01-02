@@ -10,6 +10,7 @@ Patches Yayo's ammunition sytem to be more interesting and have more significant
     [*] Epona
   [/list]
   [*] Changes how much ammo is produced (3x more) and ammo stack sizes (4x more) to better fit above changes
+  [*] Primitive ammo only uses wood. This is to simplify cost calculation. And nothing else made sense.
   [*] Make ammo require specific research before it can be produced
   [list]
     [*] Industrial - Gunsmithing
