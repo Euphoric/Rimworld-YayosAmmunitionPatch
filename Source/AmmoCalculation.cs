@@ -16,7 +16,7 @@ namespace Euphoric.YayosAmmunitionPatch
             var leavesBehindAdditionaDamage = GetLeavesBehindDamage(parameter.LeavesBehind);
             
             var effectiveDamage = (parameter.BaseDamage+leavesBehindAdditionaDamage) * averageAccuracy * armorPenetrationRating * explosionRating;
-            var damageToAmmoScale = 2 / ammoCostRatios[parameter.AmmoType];
+            var damageToAmmoScale = GetDamageToAmmoScale(parameter.AmmoType) / ammoCostRatios[parameter.AmmoType];
             var ammoPerShot = (int)Math.Max(1, Math.Round(effectiveDamage * damageToAmmoScale));
 
             var shotsPerMinute = 60 / (parameter.Warmup + parameter.Cooldown + parameter.SecondsBetweenBurstShots * (parameter.Burst - 1)) * parameter.Burst;
@@ -37,23 +37,17 @@ namespace Euphoric.YayosAmmunitionPatch
             switch (ammoType)
             {
                 case AmmoType.Primitive:
-                    return 3.0;
                 case AmmoType.PrimitiveFire:
-                    return 2.1;
                 case AmmoType.PrimitiveSpecial:
-                    return 0.9;
+                    return 1.0;
                 case AmmoType.Industrial:
-                    return 2.0;
                 case AmmoType.IndustrialFire:
-                    return 1.5;
                 case AmmoType.IndustrialSpecial:
-                    return 1;
+                    return 2.0;
                 case AmmoType.Spacer:
-                    return 1;
                 case AmmoType.SpacerFire:
-                    return 0.5;
                 case AmmoType.SpacerSpecial:
-                    return 0.25;
+                    return 3.0;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(ammoType), ammoType, null);
             }
@@ -88,8 +82,8 @@ namespace Euphoric.YayosAmmunitionPatch
 
             return 1;
         }
-        
-        private static double RangeAccuracyBias(double range)
+
+        public static double RangeAccuracyBias(double range)
         {
             if (range <= 3)
             {
@@ -98,22 +92,22 @@ namespace Euphoric.YayosAmmunitionPatch
             
             if (range <= 12)
             {
-                return (range - 0) / (12 - 3) * (1.0 - 0.75) + 0.75;
+                return (range - 3) / (12 - 3) * (1.0 - 0.75) + 0.75;
             }
 
             if (range <= 25)
             {
-                return (range - 12) / (25 - 12) * (1.0 - 1.0) + 1.0;
+                return (range - 12) / (25 - 12) * (0.9 - 1.0) + 1.0;
             }
 
             if (range <= 38)
             {
-                return (range - 25) / (38 - 25) * (1.0 - 0.2) + 0.2;
+                return (range - 25) / (38 - 25) * (0.4 - 0.9) + 0.9;
             }
             
             if (range <= 60)
             {
-                return (range - 38) / (60 - 38) * (0 - 0.2) + 0.2;
+                return (range - 38) / (60 - 38) * (0 - 0.4) + 0.4;
             }
 
             return 0;
@@ -126,8 +120,8 @@ namespace Euphoric.YayosAmmunitionPatch
         /// </summary>
         private static double AverageAccuracy(GunParameter parameter)
         {
-            var averageAccuracy = Enumerable.Range(3, 60).Select(rg=>parameter.AccuracyAt(rg)*RangeAccuracyBias(rg)).Sum();
-            var averageAccuracyForcedMiss = Enumerable.Range(3, 60).Select(rg=> parameter.ForcedAccuracyAt(rg)*RangeAccuracyBias(rg)).Sum();
+            var averageAccuracy = Enumerable.Range(4, 60).Select(rg=>parameter.AccuracyAt(rg)*RangeAccuracyBias(rg)).Sum();
+            var averageAccuracyForcedMiss = Enumerable.Range(4, 60).Select(rg=> parameter.ForcedAccuracyAt(rg)*RangeAccuracyBias(rg)).Sum();
 
             return Math.Max(averageAccuracy, averageAccuracyForcedMiss) / RangeAccuracyBiasTotal.Value;
         }

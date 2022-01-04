@@ -13,6 +13,7 @@ namespace Euphoric.YayosAmmunitionPatch
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
             ArmorPiercingRatingChart();
+            RangeAccuracyBiasChart();
             CalculateSampleGuns();
 
             Console.WriteLine("Done.");
@@ -158,6 +159,19 @@ namespace Euphoric.YayosAmmunitionPatch
                     var armorPenetration = ap / 100d;
                     sw.WriteLine(
                         $"{armorPenetration};{ArmorRatingDistribution(armorPenetration)};{AmmoCalculation.AverageArmorPenetrationRating(armorPenetration)};{CalculateArmorPiercingRating(armorPenetration)}");
+                }
+            }
+        }
+        
+        private static void RangeAccuracyBiasChart()
+        {
+            using (StreamWriter sw = new StreamWriter($"range_accuracy_bias.csv"))
+            {
+                sw.WriteLine("Range;Bias;");
+                for (int range = 0; range <= 65; range += 1)
+                {
+                    sw.WriteLine(
+                        $"{range};{AmmoCalculation.RangeAccuracyBias(range)};");
                 }
             }
         }
