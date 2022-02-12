@@ -7,6 +7,9 @@
         <xpath>Defs/ThingDef[defName = "yy_ammo_industrial"]</xpath>
         <value>
             <stackLimit>1000</stackLimit>
+            <statBases>
+                <Mass>0.01</Mass>
+            </statBases>
         </value>
     </Operation>
 
@@ -21,6 +24,9 @@
         <xpath>Defs/ThingDef[defName = "yy_ammo_industrial_emp"]</xpath>
         <value>
             <stackLimit>1000</stackLimit>
+            <statBases>
+                <Mass>0.01</Mass>
+            </statBases>
         </value>
     </Operation>
 
@@ -30,6 +36,9 @@
         <xpath>Defs/ThingDef[defName = "yy_ammo_spacer"]</xpath>
         <value>
             <stackLimit>1000</stackLimit>
+            <statBases>
+                <Mass>0.01</Mass>
+            </statBases>
         </value>
     </Operation>
 
@@ -37,6 +46,9 @@
         <xpath>Defs/ThingDef[defName = "yy_ammo_spacer_fire"]</xpath>
         <value>
             <stackLimit>1000</stackLimit>
+            <statBases>
+                <Mass>0.01</Mass>
+            </statBases>
         </value>
     </Operation>
 
@@ -44,6 +56,9 @@
         <xpath>Defs/ThingDef[defName = "yy_ammo_spacer_emp"]</xpath>
         <value>
             <stackLimit>1000</stackLimit>
+            <statBases>
+                <Mass>0.01</Mass>
+            </statBases>
         </value>
     </Operation>
 </Patch>
