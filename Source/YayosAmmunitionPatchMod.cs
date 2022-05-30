@@ -70,15 +70,16 @@ namespace Euphoric.YayosAmmunitionPatch
             foreach (ThingDef thingDef in reloadableThings)
             {
                 var props = thingDef.GetCompProperties<CompProperties_Reloadable>();
-                VerbProperties verb = thingDef.Verbs[0];
-                var defaultProjectile = verb?.defaultProjectile;
+                VerbProperties fireVerb = thingDef.Verbs?.FirstOrDefault();
+                var defaultProjectile = fireVerb?.defaultProjectile;
                 var projectileParams = defaultProjectile?.projectile;
                 var damageDef = projectileParams?.damageDef;
 
                 var ammoType = GetLocalAmmoType(props.ammoDef);
-                if (ammoType != AmmoType.Unknown && projectileParams != null)
+                var isValidWeaponParameters = ammoType != AmmoType.Unknown && projectileParams != null;
+                if (isValidWeaponParameters)
                 {
-                    var secondsBetweenBurstShots = verb.ticksBetweenBurstShots / 60f;
+                    var secondsBetweenBurstShots = fireVerb.ticksBetweenBurstShots / 60f;
                     var cooldownTime = thingDef.statBases.GetStatValueFromList(StatDefOf.RangedWeapon_Cooldown, 0.0f);
                     var baseDamage = projectileParams.GetDamageAmount(1);
                     var accuracyTouch = thingDef.statBases.GetStatValueFromList(StatDefOf.AccuracyTouch, 0.0f);
@@ -91,11 +92,11 @@ namespace Euphoric.YayosAmmunitionPatch
 
                     GunParameter gunParameter = new GunParameter(
                         thingDef.defName, ammoType,
-                        verb.warmupTime, cooldownTime, secondsBetweenBurstShots,
-                        verb.burstShotCount,
+                        fireVerb.warmupTime, cooldownTime, secondsBetweenBurstShots,
+                        fireVerb.burstShotCount,
                         baseDamage, armorPenetration,
-                        verb.range, accuracyTouch, accuracyShort, accuracyMedium, accuracyLong,
-                        verb.ForcedMissRadius, projectileParams.explosionRadius, leavesBehind);
+                        fireVerb.range, accuracyTouch, accuracyShort, accuracyMedium, accuracyLong,
+                        fireVerb.ForcedMissRadius, projectileParams.explosionRadius, leavesBehind);
 
                     var gunAmmoSetting =
                         AmmoCalculation.CalculateGunAmmoParameters(gunParameter, ammoCostRatios, yayoCombat.yayoCombat.maxAmmo);
@@ -114,17 +115,17 @@ namespace Euphoric.YayosAmmunitionPatch
                     var usageCost = statsExtension.CalculateUsageCost();
 
                     patchedWeaponsLogMessage.AppendLine(
-                        $"{thingDef.defName};{thingDef.label};{thingDef.modContentPack?.Name};{props.ammoDef?.defName};{damageDef?.defName};{damageDef?.armorCategory?.defName};{defaultProjectile.thingClass?.Name};{projectileParams.explosionRadius};{leavesBehindStr};{cooldownTime};{verb.warmupTime};{verb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{verb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};{verb.ForcedMissRadius};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.ExplosionRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute};{usageCost.CostPerShot};{usageCost.CostPerFull};{string.Join("|", usageCost.IngredientsPerShot)}");
+                        $"{thingDef.defName};{thingDef.label};{thingDef.modContentPack?.Name};{props.ammoDef?.defName};{damageDef?.defName};{damageDef?.armorCategory?.defName};{defaultProjectile.thingClass?.Name};{projectileParams.explosionRadius};{leavesBehindStr};{cooldownTime};{fireVerb.warmupTime};{fireVerb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{fireVerb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};{fireVerb.ForcedMissRadius};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.ExplosionRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute};{usageCost.CostPerShot};{usageCost.CostPerFull};{string.Join("|", usageCost.IngredientsPerShot)}");
                 }
                 else
                 {
                     ignoredWeaponsLogMessage.AppendLine(
-                        $"{thingDef.defName};{props.ammoDef?.defName};{projectileParams?.ToString() ?? ""}");
+                        $"{thingDef.defName};{thingDef.modContentPack?.Name};{props.ammoDef?.defName}");
                 }
             }
 
             Logger.Message(patchedWeaponsLogMessage.ToString());
-            //Logger.Message(ignoredWeaponsLogMessage.ToString());
+            Logger.Message(ignoredWeaponsLogMessage.ToString());
         }
 
         private RecipeDef GetAmmoRecipe(ThingDef ammoDef)
