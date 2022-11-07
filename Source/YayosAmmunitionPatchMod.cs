@@ -6,6 +6,7 @@ using HugsLib;
 using RimWorld;
 using Verse;
 
+
 namespace Euphoric.YayosAmmunitionPatch
 {
     public class YayosAmmunitionPatchMod : ModBase
@@ -97,7 +98,7 @@ namespace Euphoric.YayosAmmunitionPatch
                         baseDamage, armorPenetration,
                         fireVerb.range, accuracyTouch, accuracyShort, accuracyMedium, accuracyLong,
                         fireVerb.ForcedMissRadius, projectileParams.explosionRadius, leavesBehind);
-
+                    
                     var gunAmmoSetting =
                         AmmoCalculation.CalculateGunAmmoParameters(gunParameter, ammoCostRatios, yayoCombat.yayoCombat.maxAmmo);
 
