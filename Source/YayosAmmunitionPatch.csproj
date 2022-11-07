@@ -34,16 +34,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="YayosAmmunitionPatch.TestApp\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="YayosAmmunitionPatch.TestApp\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="YayosAmmunitionPatch.TestApp\**" />
-  </ItemGroup>
-
 </Project>

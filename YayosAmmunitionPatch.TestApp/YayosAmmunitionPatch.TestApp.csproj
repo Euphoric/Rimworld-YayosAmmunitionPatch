@@ -7,9 +7,19 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     </PropertyGroup>
-    
     <ItemGroup>
-      <ProjectReference Include="..\YayosAmmunitionPatch.csproj" />
+      <Compile Include="..\Source\AmmoCalculation.cs">
+        <Link>AmmoCalculation.cs</Link>
+      </Compile>
+      <Compile Include="..\Source\AmmoType.cs">
+        <Link>AmmoType.cs</Link>
+      </Compile>
+      <Compile Include="..\Source\GunAmmoSetting.cs">
+        <Link>GunAmmoSetting.cs</Link>
+      </Compile>
+      <Compile Include="..\Source\GunParameter.cs">
+        <Link>GunParameter.cs</Link>
+      </Compile>
     </ItemGroup>
 
 </Project>
