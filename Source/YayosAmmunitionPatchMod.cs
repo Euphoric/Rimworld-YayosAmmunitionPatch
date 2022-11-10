@@ -102,8 +102,10 @@ namespace Euphoric.YayosAmmunitionPatch
                     var gunAmmoSetting =
                         AmmoCalculation.CalculateGunAmmoParameters(gunParameter, ammoCostRatios, yayoCombat.yayoCombat.maxAmmo);
 
-                    var leavesBehindStr =
-                        $"{projectileParams.preExplosionSpawnThingDef}|{projectileParams.postExplosionSpawnThingDef}";
+                    if (!string.IsNullOrEmpty(gunAmmoSetting.Warning))
+                    {
+                        Logger.Warning(thingDef.defName + ":" + gunAmmoSetting.Warning);
+                    }
 
                     props.ammoCountPerCharge = gunAmmoSetting.AmmoPerShot;
                     props.maxCharges = gunAmmoSetting.GunShots;
@@ -115,6 +117,8 @@ namespace Euphoric.YayosAmmunitionPatch
 
                     var usageCost = statsExtension.CalculateUsageCost();
 
+                    var leavesBehindStr =
+                        $"{projectileParams.preExplosionSpawnThingDef}|{projectileParams.postExplosionSpawnThingDef}";
                     patchedWeaponsLogMessage.AppendLine(
                         $"{thingDef.defName};{thingDef.label};{thingDef.modContentPack?.Name};{props.ammoDef?.defName};{damageDef?.defName};{damageDef?.armorCategory?.defName};{defaultProjectile.thingClass?.Name};{projectileParams.explosionRadius};{leavesBehindStr};{cooldownTime};{fireVerb.warmupTime};{fireVerb.burstShotCount};{secondsBetweenBurstShots};{baseDamage};{armorPenetration};{fireVerb.range};{accuracyTouch};{accuracyShort};{accuracyMedium};{accuracyLong};{fireVerb.ForcedMissRadius};;{gunAmmoSetting.ShotsPerMinute};{gunAmmoSetting.AverageAccuracy};{gunAmmoSetting.ArmorPenetrationRating};{gunAmmoSetting.ExplosionRating};{gunAmmoSetting.EffectiveDamage};{gunAmmoSetting.AmmoPerShot};{gunAmmoSetting.AmmoPerMinute};{usageCost.CostPerShot};{usageCost.CostPerFull};{string.Join("|", usageCost.IngredientsPerShot)}");
                 }

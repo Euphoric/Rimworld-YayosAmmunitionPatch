@@ -19,12 +19,19 @@ namespace Euphoric.YayosAmmunitionPatch
             var damageToAmmoScale = GetDamageToAmmoScale(parameter.AmmoType) / ammoCostRatios[parameter.AmmoType];
             var ammoPerShot = (int)Math.Max(1, Math.Round(effectiveDamage * damageToAmmoScale));
 
+            string warning = "";
+            if (ammoPerShot > 75)
+            {
+                warning += "Ammo count per charge clipped from "+ ammoPerShot +" to 75, due to pawn's inability to carry more than 75 units"+Environment.NewLine;
+                ammoPerShot = 75;
+            }
+            
             var shotsPerMinute = 60 / (parameter.Warmup + parameter.Cooldown + parameter.SecondsBetweenBurstShots * (parameter.Burst - 1)) * parameter.Burst;
             shotsPerMinute = Math.Round(shotsPerMinute, 2);
 
             var ammoPerMinute = shotsPerMinute * ammoPerShot;
             var gunShots = (int)Math.Round(shotsPerMinute * 1.5 * maxAmmoSetting);
-            return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, explosionRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute, gunShots);
+            return new GunAmmoSetting(averageAccuracy, armorPenetrationRating, explosionRating, effectiveDamage, ammoPerShot, shotsPerMinute, ammoPerMinute, gunShots, warning);
         }
 
         private static double AverageExplosionRating(double explosionRadius)
