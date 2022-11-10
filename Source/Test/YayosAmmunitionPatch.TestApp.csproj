@@ -8,16 +8,16 @@
         <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     </PropertyGroup>
     <ItemGroup>
-      <Compile Include="..\Source\AmmoCalculation.cs">
+      <Compile Include="..\Shared\AmmoCalculation.cs">
         <Link>AmmoCalculation.cs</Link>
       </Compile>
-      <Compile Include="..\Source\AmmoType.cs">
+      <Compile Include="..\Shared\AmmoType.cs">
         <Link>AmmoType.cs</Link>
       </Compile>
-      <Compile Include="..\Source\GunAmmoSetting.cs">
+      <Compile Include="..\Shared\GunAmmoSetting.cs">
         <Link>GunAmmoSetting.cs</Link>
       </Compile>
-      <Compile Include="..\Source\GunParameter.cs">
+      <Compile Include="..\Shared\GunParameter.cs">
         <Link>GunParameter.cs</Link>
       </Compile>
     </ItemGroup>
